@@ -1,4 +1,4 @@
-package com.aquawebdev.auctor.configurations;
+package com.aquawebdev.auctor.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;

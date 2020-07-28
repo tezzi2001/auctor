@@ -1,4 +1,4 @@
-package com.aquawebdev.auctor.configurations;
+package com.aquawebdev.auctor.config;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
