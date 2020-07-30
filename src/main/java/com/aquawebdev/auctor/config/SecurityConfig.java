@@ -23,12 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/signIn")
                     .successForwardUrl("/article")
                     .permitAll()
                 .and()
                     .logout()
-                    .logoutUrl("/logout")
+                    .logoutUrl("/signOut")
                     .permitAll()
                     .logoutSuccessUrl("/");
 
