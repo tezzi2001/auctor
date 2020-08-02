@@ -6,29 +6,25 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @AllArgsConstructor
 public class SignController {
-    private ISignService signService;
+    private final ISignService signService;
 
     @GetMapping("/signUp")
-    public String getSignUpPage(Model model, User user, Boolean isSuccessful) {
+    public String getSignUpPage(Model model, User user) {
         model.addAttribute("user", user);
-        model.addAttribute("isSuccessful", isSuccessful);
         return "signUp";
     }
 
     @PostMapping("/signUp")
-    public String signUp(Model model) {
-        boolean isSuccessful = (boolean) model.getAttribute("isSuccessful");
-        if (isSuccessful) {
+    public String signUp(@ModelAttribute("user") User user) {
+        if (!signService.signUp(user)) {
             return "signUp";
         }
-
-        User user = (User) model.getAttribute("user");
-        signService.signUp(user);
         return "signIn";
     }
 }
