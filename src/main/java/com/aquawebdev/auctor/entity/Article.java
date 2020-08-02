@@ -1,6 +1,7 @@
 package com.aquawebdev.auctor.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity

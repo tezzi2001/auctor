@@ -3,11 +3,12 @@ package com.aquawebdev.auctor.service;
 import com.aquawebdev.auctor.entity.Role;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.repository.UserRepository;
-import java.util.Collections;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
