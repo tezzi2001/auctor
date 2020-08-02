@@ -27,4 +27,21 @@ public class SignController {
         }
         return "signIn";
     }
+
+    @GetMapping("/signIn")
+    public String getSignInPage(Model model) {
+        model.addAttribute("login");
+        model.addAttribute("password");
+        return "signIn";
+    }
+
+    @PostMapping("/signIn")
+    public String signIn(Model model) {
+        String login = (String) model.getAttribute("login");
+        String password = (String) model.getAttribute("password");
+        if (!signService.signIn(login, password)) {
+            return "signIn";
+        }
+        return "articlesList";
+    }
 }
