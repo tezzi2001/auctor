@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -42,7 +43,7 @@ public class User implements UserDetails {
     private List<Article> articles ;
 
     @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
-    private List<Role> roles;
+    private Set<Role> roles;
 
     @Override
     public String getUsername() {
