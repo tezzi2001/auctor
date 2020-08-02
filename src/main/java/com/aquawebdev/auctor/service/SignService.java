@@ -38,7 +38,6 @@ public class SignService implements ISignService {
     }
 
     @Override
-    public boolean resetPassword(String email) {
-        return false;
+    public void resetPassword(String email) {
     }
 }

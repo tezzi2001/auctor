@@ -5,5 +5,5 @@ import com.aquawebdev.auctor.entity.User;
 public interface ISignService {
     boolean signIn(String login, String password);
     boolean signUp(User user);
-    boolean resetPassword(String email);
+    void resetPassword(String email);
 }
