@@ -1,9 +1,10 @@
-package com.aquawebdev.auctor.service;
+package com.aquawebdev.auctor.service.implementations;
 
 import com.aquawebdev.auctor.entity.News;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.repository.NewsRepository;
 import com.aquawebdev.auctor.repository.UserRepository;
+import com.aquawebdev.auctor.service.NewsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

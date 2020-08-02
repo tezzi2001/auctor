@@ -1,8 +1,9 @@
-package com.aquawebdev.auctor.service;
+package com.aquawebdev.auctor.service.implementations;
 
 import com.aquawebdev.auctor.entity.Role;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.repository.UserRepository;
+import com.aquawebdev.auctor.service.SignService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
