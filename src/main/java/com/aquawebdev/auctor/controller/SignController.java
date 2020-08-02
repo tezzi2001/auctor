@@ -44,4 +44,15 @@ public class SignController {
         }
         return "articlesList";
     }
+
+    @GetMapping("/resetPassword")
+    public String getResetPasswordPage(Model model) {
+        model.addAttribute("email");
+        return "resetPassword";
+    }
+
+    @PostMapping("/resetPassword")
+    public void resetPassword(@ModelAttribute("email") String email) {
+        signService.resetPassword(email);
+    }
 }
