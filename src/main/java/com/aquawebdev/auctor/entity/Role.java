@@ -21,6 +21,11 @@ public class Role implements GrantedAuthority {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<User> users;
 
+    public Role(Long roleId, String name) {
+        this.roleId = roleId;
+        this.name = name;
+    }
+
     @Override
     public String getAuthority() {
         return name;
