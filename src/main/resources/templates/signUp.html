@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auctor | Sign In</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Auctor | Sign Up</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
     <div class="qs1">
@@ -30,23 +30,23 @@
         </header>
         
 
-        <form action="">
+        <form th:action="@{/signUp}" th:object="${user}" method="POST">
             <p class="title">Start writing for free</p>
             <div class="s-up">
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Login">
+                <input type="text" placeholder="Name" th:field="*{name}">
+                <input type="text" placeholder="Login" th:field="*{login}">
             </div>
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <a href="#" class="button">Create account</a>
-            <p>Already have an account? <a href="index.html">Sign in.</a></p>
+            <input type="text" placeholder="Email" th:field="*{email}">
+            <input type="password" placeholder="Password" th:field="*{password}">
+            <input type="submit" value="Create account" class="button"/>
+            <p>Already have an account? <a th:href="@{/signIn}">Sign in.</a></p>
         </form>
         
     
         <footer>
             <div class="wrapper">
                 <div class="ft">
-                    <img src="img/com_logo.jpg" alt="Logo" width="250px">
+                    <img th:src="@{img/com_logo.jpg}" alt="Logo" width="250px">
                     <div class="srcs">
                         <a href="#">About us</a>
                         <a href="#">Contact us</a>
@@ -55,7 +55,7 @@
             </div>
         </footer>
     </div>
-    
-    <script src="js/script.js"></script>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>
