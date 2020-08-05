@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/signUp").not().fullyAuthenticated()
                     .antMatchers("/news/**", "/article/**").hasRole("USER")
                     .antMatchers("/profile", "/create").hasRole("USER")
-                    .antMatchers("/", "/resetPassword").permitAll()
+                    .antMatchers("/", "/resetPassword", "/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
