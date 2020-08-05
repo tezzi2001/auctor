@@ -30,8 +30,8 @@ public class SignController {
 
     @GetMapping("/signIn")
     public String getSignInPage(Model model) {
-        model.addAttribute("login");
-        model.addAttribute("password");
+        model.addAttribute("login", "");
+        model.addAttribute("password", "");
         return "signIn";
     }
 
@@ -47,7 +47,7 @@ public class SignController {
 
     @GetMapping("/resetPassword")
     public String getResetPasswordPage(Model model) {
-        model.addAttribute("email");
+        model.addAttribute("email", "");
         return "resetPassword";
     }
 
