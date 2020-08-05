@@ -18,21 +18,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/signUp").not().fullyAuthenticated()
                     .antMatchers("/news/**", "/article/**").hasRole("USER")
-                    .antMatchers("/profile", "/create").hasRole("USER")
-                    .antMatchers("/", "/resetPassword", "/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
+                    .antMatchers("/", "/profile", "/create").hasRole("USER")
+                    .antMatchers("/resetPassword", "/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/signIn")
-                    .successForwardUrl("/article")
                     .permitAll()
                 .and()
                     .logout()
                     .logoutUrl("/signOut")
                     .permitAll()
-                    .logoutSuccessUrl("/");
-
-
+                    .logoutSuccessUrl("/signIn");
     }
 
     @Bean
