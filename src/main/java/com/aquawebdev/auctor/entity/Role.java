@@ -1,16 +1,17 @@
 package com.aquawebdev.auctor.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
 @Data
+@EqualsAndHashCode(of = "roleId")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -19,8 +20,8 @@ public class Role implements GrantedAuthority {
     @Column
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     public Role(Long roleId, String name) {
         this.roleId = roleId;
@@ -31,5 +32,4 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return name;
     }
-
 }
