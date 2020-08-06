@@ -5,9 +5,10 @@ import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.repository.UserRepository;
 import com.aquawebdev.auctor.service.SignService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
 import java.util.Optional;
 
@@ -40,5 +41,16 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public void resetPassword(String email) {
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String login) {
+        User user = userRepository.findByLogin(login).orElse(null);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return user;
     }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auctor | Sign In</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="qs1">
+        <div class="q1"></div>
+        <div class="q2"></div>
+    </div>
+    
+    <div class="main-content">
+        <header>
+            <div class="wrapper">
+                <div class="head">
+                    <a href="#" class="logo">Auctor</a>
+                    <div class="lang">
+                        <p class="lang-title">eng</p> <div class="lang-tr tr-not-active"></div>
+                        <ul class="lang-change hide">
+                            <li class="lang-selector hide">eng</li>
+                            <li class="lang-selector">рус</li>
+                            <li class="lang-selector">укр</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <form th:action="@{/signIn}" method="POST">
+            <p class="title">Log into my account</p>
+            <input type="text" name="username" id="username" placeholder="Login or email">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="submit" value="Sign in" class="button"/>
+            <p>Don't have an account? <a th:href="@{/signUp}">Sign up.</a></p>
+            <a th:href="@{/resetPassword}" class="fg">Forgot password?</a>
+        </form>
+        
+    
+        <footer>
+            <div class="wrapper">
+                <div class="ft">
+                    <img th:src="@{img/com_logo.jpg}" alt="Logo" width="250px">
+                    <div class="srcs">
+                        <a href="#">About us</a>
+                        <a href="#">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>

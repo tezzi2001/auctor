@@ -29,30 +29,29 @@ public class SignController {
     }
 
     @GetMapping("/signIn")
-    public String getSignInPage(Model model) {
-        model.addAttribute("login");
-        model.addAttribute("password");
+    public String getSignInPage() {
         return "signIn";
-    }
-
-    @PostMapping("/signIn")
-    public String signIn(Model model) {
-        String login = (String) model.getAttribute("login");
-        String password = (String) model.getAttribute("password");
-        if (!signService.signIn(login, password)) {
-            return "signIn";
-        }
-        return "articlesList";
     }
 
     @GetMapping("/resetPassword")
     public String getResetPasswordPage(Model model) {
-        model.addAttribute("email");
+        model.addAttribute("email", "");
         return "resetPassword";
     }
 
     @PostMapping("/resetPassword")
     public void resetPassword(@ModelAttribute("email") String email) {
         signService.resetPassword(email);
+    }
+
+    @GetMapping("/login")
+    public String loginRedirect(User user, Model model) {
+        model.addAttribute("user", user);
+        return "forward:/signIn";
+    }
+
+    @GetMapping("/")
+    public String getArticle() {
+        return "articlesList";
     }
 }
