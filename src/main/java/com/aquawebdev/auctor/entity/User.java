@@ -1,23 +1,23 @@
 package com.aquawebdev.auctor.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
 @Data
+@EqualsAndHashCode(of = "userId")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int userId;
+    private long userId;
 
     @Column
     private String login;
@@ -38,12 +38,12 @@ public class User implements UserDetails {
     private byte[] photo;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<News> news;
+    private Set<News> news;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Article> articles ;
+    private Set<Article> articles ;
 
-    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     @Override
