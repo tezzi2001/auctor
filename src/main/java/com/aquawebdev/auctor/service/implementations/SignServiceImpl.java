@@ -19,12 +19,6 @@ public class SignServiceImpl implements SignService {
     private final UserRepository userRepository;
 
     @Override
-    public boolean signIn(String login, String password) {
-        Optional<User> persistentUser = userRepository.findByLogin(login);
-        return persistentUser.filter(user -> passwordEncoder.matches(password, user.getPassword())).isPresent();
-    }
-
-    @Override
     public boolean signUp(User user) {
         Optional<User> persistentUser = userRepository.findByLogin(user.getLogin());
 
