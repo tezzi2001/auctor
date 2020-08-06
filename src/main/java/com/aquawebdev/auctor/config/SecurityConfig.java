@@ -20,22 +20,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf()
-                .disable()
+                    .disable()
                 .authorizeRequests()
-                .antMatchers("/signUp", "/resetPassword").not().fullyAuthenticated()
-                .antMatchers("/news/**", "/article/**").hasRole("USER")
-                .antMatchers("/", "/profile", "/create").hasRole("USER")
-                .antMatchers("/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
+                    .antMatchers("/signUp", "/resetPassword").not().fullyAuthenticated()
+                    .antMatchers("/news/**", "/article/**").hasRole("USER")
+                    .antMatchers("/", "/profile", "/create").hasRole("USER")
+                    .antMatchers("/css/**", "/js/**", "/fonts/**", "/img/**").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin()
-                .loginPage("/signIn")
-                .permitAll()
-                .and()
+                    .loginPage("/signIn")
+                    .permitAll()
+                    .and()
                 .logout()
-                .logoutUrl("/signOut")
-                .permitAll()
-                .logoutSuccessUrl("/signIn");
+                    .logoutUrl("/signOut")
+                    .permitAll()
+                    .logoutSuccessUrl("/signIn");
     }
 
     @Bean
