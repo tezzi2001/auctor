@@ -40,7 +40,11 @@ public class SignServiceImpl implements SignService {
     }
 
     @Override
-    public void resetPassword(String email) {
+    public boolean resetPassword(String email) {
+        if("".equals(email))
+            return false;
+
+        return true;
     }
 
     @Override

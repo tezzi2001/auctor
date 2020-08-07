@@ -5,5 +5,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface SignService extends UserDetailsService {
     boolean signUp(User user);
-    void resetPassword(String email);
+    boolean resetPassword(String email);
 }
