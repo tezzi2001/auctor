@@ -20,8 +20,10 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public boolean signUp(User user) {
-        if ("".equals(user.getName()) || "".equals(user.getEmail())
-                || "".equals(user.getLogin()) || "".equals(user.getPassword())) {
+        if ("".equals(user.getName())
+                || "".equals(user.getEmail())
+                || "".equals(user.getLogin())
+                || "".equals(user.getPassword())) {
            return false;
         }
 
@@ -41,10 +43,7 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public boolean resetPassword(String email) {
-        if("".equals(email))
-            return false;
-
-        return true;
+        return !"".equals(email);
     }
 
     @Override
