@@ -20,6 +20,12 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public boolean signUp(User user) {
+        if ("".equals(user.getName()) || "".equals(user.getEmail())
+                || "".equals(user.getLogin()) || "".equals(user.getPassword())) {
+           return false;
+        }
+
+
         Optional<User> persistentUser = userRepository.findByLogin(user.getLogin());
 
         if (persistentUser.isPresent()) {
