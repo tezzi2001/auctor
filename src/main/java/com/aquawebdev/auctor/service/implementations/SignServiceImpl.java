@@ -19,13 +19,13 @@ public class SignServiceImpl implements SignService {
     private final UserRepository userRepository;
 
     @Override
-    public boolean signIn(String login, String password) {
-        Optional<User> persistentUser = userRepository.findByLogin(login);
-        return persistentUser.filter(user -> passwordEncoder.matches(password, user.getPassword())).isPresent();
-    }
-
-    @Override
     public boolean signUp(User user) {
+        if ("".equals(user.getName()) || "".equals(user.getEmail())
+                || "".equals(user.getLogin()) || "".equals(user.getPassword())) {
+           return false;
+        }
+
+
         Optional<User> persistentUser = userRepository.findByLogin(user.getLogin());
 
         if (persistentUser.isPresent()) {
@@ -40,7 +40,11 @@ public class SignServiceImpl implements SignService {
     }
 
     @Override
-    public void resetPassword(String email) {
+    public boolean resetPassword(String email) {
+        if("".equals(email))
+            return false;
+
+        return true;
     }
 
     @Override
