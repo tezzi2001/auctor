@@ -108,6 +108,7 @@
             </activation>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
+                <activatedProperties>dev</activatedProperties>
             </properties>
         </profile>
         <profile>
@@ -119,10 +120,9 @@
             </activation>
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
+                <activatedProperties>prod</activatedProperties>
             </properties>
         </profile>
     </profiles>
-
-    <packaging>war</packaging>
 
 </project>
