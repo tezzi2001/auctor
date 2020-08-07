@@ -44,12 +44,6 @@ public class SignController {
         signService.resetPassword(email);
     }
 
-    @GetMapping("/login")
-    public String loginRedirect(User user, Model model) {
-        model.addAttribute("user", user);
-        return "forward:/signIn";
-    }
-
     @GetMapping("/")
     public String getArticle() {
         return "articlesList";
