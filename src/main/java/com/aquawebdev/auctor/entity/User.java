@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
-@Entity
 @NoArgsConstructor
+@Entity
 @Table(name = "users")
 @Data
 @EqualsAndHashCode(of = "userId")
@@ -19,22 +19,16 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long userId;
 
-    @Column
     private String login;
 
-    @Column
     private String name;
 
-    @Column
     private String surname;
 
-    @Column
     private String email;
 
-    @Column
     private String password;
 
-    @Column
     private byte[] photo;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

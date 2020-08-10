@@ -1,9 +1,10 @@
 package com.aquawebdev.auctor.entity;
 
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 @Data
 public class News {
@@ -11,7 +12,6 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long newsId;
 
-    @Column
     private String newsContent;
 
     @ManyToOne(fetch = FetchType.LAZY)

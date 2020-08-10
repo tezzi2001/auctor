@@ -1,10 +1,11 @@
 package com.aquawebdev.auctor.entity;
 
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "articles")
@@ -13,10 +14,8 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long articleId;
 
-    @Column
     private String articleContent;
 
-    @Column
     private LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY)
