@@ -18,6 +18,8 @@ public class Article {
 
     private LocalDate date;
 
+    private String previewImage;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

@@ -14,6 +14,8 @@ public class News {
 
     private String newsContent;
 
+    private String previewImage;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
