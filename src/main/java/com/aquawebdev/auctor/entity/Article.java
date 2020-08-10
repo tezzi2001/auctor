@@ -3,6 +3,7 @@ package com.aquawebdev.auctor.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -14,6 +15,9 @@ public class Article {
 
     @Column
     private String articleContent;
+
+    @Column
+    private LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

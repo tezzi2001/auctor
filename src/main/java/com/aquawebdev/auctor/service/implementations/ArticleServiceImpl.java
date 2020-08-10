@@ -9,13 +9,16 @@ import com.aquawebdev.auctor.service.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final UserRepository userRepository;
+
 
     @Override
     public boolean addArticles(String content, String login) {
@@ -37,12 +40,28 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Iterable<Article> findAll() {
+    public List<Article> findAll() {
         return articleRepository.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
         articleRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Article> articlesForOnePage(int page) {
+        int articlesPerPage = 7;
+        List<Article> articlesForPage = new ArrayList<>();
+        List<Article> persistentArticles = articleRepository.findAll();
+
+        Comparator<Article> comparator = Comparator.comparing(Article::getDate);
+        persistentArticles.sort(comparator);
+
+        int i = articlesPerPage * (page - 1);
+        for(; i < articlesPerPage * page; i++) {
+          articlesForPage.add(persistentArticles.get(i));
+        }
+        return articlesForPage;
     }
 }
