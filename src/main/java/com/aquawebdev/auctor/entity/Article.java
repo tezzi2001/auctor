@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @NoArgsConstructor
 @Entity
@@ -16,7 +17,7 @@ public class Article {
 
     private String articleContent;
 
-    private LocalDate date;
+    private Date date;
 
     private String previewImage;
 
