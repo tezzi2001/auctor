@@ -7,50 +7,52 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-    <div class="qs1">
-        <div class="q1"></div>
-        <div class="q2"></div>
-    </div>
+
     
-    <div class="main-content">
+    <div class="main">
         <header>
             <div class="wrapper">
                 <div class="head">
                     <a href="#" class="logo">Auctor</a>
-                    <div class="lang">
-                        <p class="lang-title">eng</p> <div class="lang-tr tr-not-active"></div>
-                        <ul class="lang-change hide">
-                            <li class="lang-selector hide">eng</li>
-                            <li class="lang-selector">рус</li>
-                            <li class="lang-selector">укр</li>
+                    <nav class="lang">
+                        <span class="lang-title"><span class="lang-title-text">eng</span><div class="lang-tr"></div></span>
+                        <ul class="lang-list hide">
+                            <li class="lang-list-item hide">eng</li>
+                            <li class="lang-list-item">rus</li>
+                            <li class="lang-list-item">ukr</li>
                         </ul>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </header>
 
 
         <form th:action="@{/signIn}" method="POST">
-            <p class="title">Log into my account</p>
+            <p class="form-title">Reset your password</p>
+            <p class="error">Incorrect username or password.</p>
             <input type="text" name="username" id="username" placeholder="Login or email">
             <input type="password" name="password" id="password" placeholder="Password">
-            <input type="submit" value="Sign in" class="button"/>
-            <p>Don't have an account? <a th:href="@{/signUp}">Sign up.</a></p>
-            <a th:href="@{/resetPassword}" class="fg">Forgot password?</a>
+            <input type="submit" value="Sign in" class="btn"/>
+            <p>Don't have an account? <a th:href="@{/signUp}">Sign up.</a><br><a th:href="@{/resetPassword}" class="fg">Forgot password?</a></p>
         </form>
         
     
         <footer>
             <div class="wrapper">
                 <div class="ft">
-                    <img src="img/com_logo.jpg" alt="Logo" width="250px">
-                    <div class="srcs">
-                        <a href="#">About us</a>
-                        <a href="#">Contact us</a>
-                    </div>
+                    <img src="img/com_logo.jpg" alt="comm" width="300px">
+                    <ul class="ft-links">
+                        <li class="ft-links-item"><a href="#">About us</a></li>
+                        <li class="ft-links-item"><a href="#">Contact us</a></li>
+                    </ul>
                 </div>
             </div>
         </footer>
+    </div>
+
+    <div class="blocks">
+        <div class="block1"></div>
+        <div class="block2"></div>
     </div>
 
     <script type="text/javascript" src="/js/script.js"></script>

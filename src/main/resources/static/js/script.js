@@ -1,53 +1,62 @@
 window.addEventListener('DOMContentLoaded', function(){
-    
-    // language
+    let lang = document.querySelector('.lang'),
+        langList = document.querySelector('.lang-list'),
+        langTitleText = document.querySelector('.lang-title-text'),
+        langListItem = document.querySelectorAll('.lang-list-item'),
+        langTr = document.querySelector('.lang-tr'),
+        btn = document.querySelector('.btn');
 
-    let chooseList = document.querySelector('.lang-change'),
-        chooseListItem = document.querySelectorAll('.lang-selector'),
-        chooseListTitle = document.querySelector('.lang-title'),
-        choose = document.querySelector('.lang');
-
-    choose.addEventListener('mouseover', function(){
-        chooseList.classList.remove('hide');
+    lang.addEventListener('mouseover', function(){
+        langList.classList.remove('hide');
+        langTr.classList.remove('lang-tr');
+        langTr.classList.add('tr-active');
     });
-    choose.addEventListener('mouseout', function(){
-        chooseList.classList.add('hide');
+    lang.addEventListener('mouseout', function(){
+        langList.classList.add('hide');
+        langTr.classList.add('lang-tr');
+        langTr.classList.remove('tr-active');
     });
 
-    function showAll(){
-        chooseListItem.forEach(item => {
-            item.classList.remove('hide');
-        });
+    function setLang(i){
+        langTitleText.innerHTML = langListItem[i].textContent;
+        langListItem[i].classList.add('hide');
     }
-    function hideItem(i){
-        chooseListItem[i].classList.add('hide');
-    }
+    // function showAllLang(){
+    //     langListItem.forEach(item => {
+    //         if(item.classList.contains('hide')){
+    //             item.classList.remove('hide');
+    //         }
+    //     });
+    // }
+    // showAllLang(0);
+    setLang(0);
 
-
-    chooseList.addEventListener('click', function(event){
+    langList.addEventListener('click', function(event){
         let target = event.target;
-
-        if(target && target.classList.contains('lang-selector')){
-            chooseListItem.forEach((item, i) => {
+        if(target.classList.contains('lang-list-item')){
+            langListItem.forEach(item => {
                 if(target == item){
-                    chooseListTitle.innerHTML = chooseListItem[i].textContent;
-                    showAll();
-                    hideItem(i);
+                    // setLang();
+                    langListItem.forEach(elem => {
+                        if(elem.classList.contains('hide')){
+                            elem.classList.remove('hide');
+                        }
+                    });
+                    langTitleText.innerHTML = item.textContent;
+                    item.classList.add('hide');
+                    langList.classList.add('hide');
                 }
             });
         }
-
     });
 
-    // buttons
+    
 
-    let button = document.querySelector('.button');
-
-    button.addEventListener('mouseover', function(){ button.style.background = '#ccf2fc'; });
-    button.addEventListener('mousedown', function(){ button.style.background = '#73dcf8'; });
-    button.addEventListener('mouseup', function(){ button.style.background = '#ccf2fc'; });
-    button.addEventListener('mouseout', function(){ button.style.background = 'transparent'; });
-    button.addEventListener('touchstart', function(){ button.style.background = '#73dcf8'; });
-    button.addEventListener('touchend', function(){ button.style.background = 'transparent'; });
+    btn.addEventListener('mousedown', function(e){
+        btn.classList.add('btn-clck');
+    });
+    btn.addEventListener('mouseup', function(e){
+        btn.classList.remove('btn-clck');
+    });
 
 });
