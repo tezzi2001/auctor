@@ -1,8 +1,6 @@
 package com.aquawebdev.auctor.service;
 
 import com.aquawebdev.auctor.entity.Article;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
