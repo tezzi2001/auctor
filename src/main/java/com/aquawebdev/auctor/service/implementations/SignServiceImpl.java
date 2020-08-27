@@ -48,12 +48,8 @@ public class SignServiceImpl implements SignService {
 
     @Override
     public UserDetails loadUserByUsername(String login) {
-        User user = userRepository.findByLogin(login).orElse(null);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return user;
+        return userRepository
+                .findByLogin(login)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
