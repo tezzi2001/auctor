@@ -14,11 +14,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import java.util.Optional;
+
 import static org.hamcrest.Matchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AuctorApplicationTests {
+class SignControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -56,6 +57,7 @@ class AuctorApplicationTests {
                 .andExpect(view().name("signIn"));
     }
 
+
     @Test
     @WithMockUser
     void signUp_isForbidden() throws Exception {
@@ -79,5 +81,78 @@ class AuctorApplicationTests {
                 .param("password", password))
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl("/"));
+    }
+
+    @Test
+    void signUp_isOk() throws Exception {
+        String login = "test login";
+        String password = "test password";
+        String email = "test email";
+        String username = "test username";
+
+        User user = new User();
+        user.setLogin(login);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(email);
+        user.setName(username);
+
+        when(userRepository.findByLogin(username)).thenReturn(Optional.of(user));
+
+        mockMvc.perform(post("/signUp")
+                .param("username",username)
+                .param("password",password)
+                .param("login",login)
+                .param("email",email))
+                .andExpect(status().isOk())
+                .andExpect(view().name("signIn"));
+    }
+
+    @Test
+    void signUp_notFound() throws Exception {
+        String login = "test login";
+        String password = "test password";
+        String email = "";
+        String username = "test username";
+
+        User user = new User();
+        user.setLogin(login);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(email);
+        user.setName(username);
+
+        when(userRepository.findByLogin(username)).thenReturn(Optional.of(user));
+
+        mockMvc.perform(post("/signUp")
+                .param("username",username)
+                .param("password",password)
+                .param("login",login)
+                .param("email",email))
+                .andExpect(status().isOk())
+                .andExpect(view().name("signUp"));
+    }
+
+    @Test
+    void signIn_resetPassword() throws Exception {
+        mockMvc.perform(get("/resetPassword"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("resetPassword"));
+    }
+
+    @Test
+    void signUp_IsPresent() throws Exception {
+        String login = "test login";
+        String password = "test password";
+        String email = "test email";
+        String username = "test username";
+
+        when(userRepository.findByLogin(login)).thenReturn(Optional.of(new User()));
+
+        mockMvc.perform(post("/signUp")
+                .param("username",username)
+                .param("password",password)
+                .param("login",login)
+                .param("email",email))
+                .andExpect(status().isOk())
+                .andExpect(view().name("signUp"));
     }
 }
