@@ -82,8 +82,8 @@ class SignControllerTests {
     @Test
     void signUp_isOk() throws Exception {
         String login = "test login";
-        String password = "test password";
-        String email = "test email";
+        String password = "Test password";
+        String email = "test@email.com";
         String username = "test username";
 
         User user = new User();
