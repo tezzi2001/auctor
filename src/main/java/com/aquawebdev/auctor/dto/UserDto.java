@@ -8,6 +8,7 @@ import com.aquawebdev.auctor.validation.annotations.UniqueLogin;
 import lombok.Data;
 import javax.imageio.ImageIO;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -19,12 +20,14 @@ public class UserDto {
     @UniqueLogin
     private String login;
 
+    @NotBlank(message = "field name can`t be blank")
     private String name;
 
     private String surname;
 
     @Email(message = "email is not valid")
     @UniqueEmail
+    @NotBlank(message = "field email can`t be blank")
     private String email;
 
     @Password
