@@ -30,7 +30,7 @@
         <form th:action="@{/signIn}" method="POST">
             <p class="form-title">Reset your password</p>
             <p class="error">Incorrect username or password.</p>
-            <input type="text" name="username" id="username" placeholder="Login or email">
+            <input type="text" name="username" id="username" placeholder="Login">
             <input type="password" name="password" id="password" placeholder="Password">
             <input type="submit" value="Sign in" class="btn"/>
             <p>Don't have an account? <a th:href="@{/signUp}">Sign up.</a><br><a th:href="@{/resetPassword}" class="fg">Forgot password?</a></p>

@@ -1,5 +1,6 @@
 package com.aquawebdev.auctor.service.implementations;
 
+import com.aquawebdev.auctor.dto.UserDto;
 import com.aquawebdev.auctor.entity.Role;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.repository.UserRepository;
@@ -19,21 +20,21 @@ public class SignServiceImpl implements SignService {
     private final UserRepository userRepository;
 
     @Override
-    public boolean signUp(User user) {
-        if ("".equals(user.getName())
-                || "".equals(user.getEmail())
-                || "".equals(user.getLogin())
-                || "".equals(user.getPassword())) {
+    public boolean signUp(UserDto userDto) {
+        if ("".equals(userDto.getName())
+                || "".equals(userDto.getEmail())
+                || "".equals(userDto.getLogin())
+                || "".equals(userDto.getPassword())) {
            return false;
         }
 
 
-        Optional<User> persistentUser = userRepository.findByLogin(user.getLogin());
+        Optional<User> persistentUser = userRepository.findByLogin(userDto.getLogin());
 
         if (persistentUser.isPresent()) {
             return false;
         }
-
+        User user = userDto.toUser();
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

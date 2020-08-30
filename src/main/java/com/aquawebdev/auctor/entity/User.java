@@ -1,14 +1,11 @@
 package com.aquawebdev.auctor.entity;
 
-import com.aquawebdev.auctor.entity.validation.annotations.Login;
-import com.aquawebdev.auctor.entity.validation.annotations.Password;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Set;
 
@@ -22,17 +19,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long userId;
 
-    @Login
     private String login;
 
     private String name;
 
     private String surname;
 
-    @Email(message = "email is not valid")
     private String email;
 
-    @Password
     private String password;
 
     private byte[] photo;

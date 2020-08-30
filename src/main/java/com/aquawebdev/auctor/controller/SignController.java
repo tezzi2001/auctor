@@ -1,6 +1,6 @@
 package com.aquawebdev.auctor.controller;
 
-import com.aquawebdev.auctor.entity.User;
+import com.aquawebdev.auctor.dto.UserDto;
 import com.aquawebdev.auctor.service.SignService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,13 +17,13 @@ public class SignController {
     private final SignService signService;
 
     @GetMapping("/signUp")
-    public String getSignUpPage(Model model, User user) {
+    public String getSignUpPage(Model model, UserDto user) {
         model.addAttribute("user", user);
         return "signUp";
     }
 
     @PostMapping("/signUp")
-    public String signUp(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+    public String signUp(@Valid @ModelAttribute("user") UserDto user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "signUp";

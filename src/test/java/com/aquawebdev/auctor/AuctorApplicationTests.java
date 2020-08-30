@@ -35,16 +35,12 @@ class AuctorApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("signUp"))
                 .andExpect(model().attribute("user", allOf(
-                        hasProperty("userId", is(0L)),
                         hasProperty("login", nullValue()),
                         hasProperty("name", nullValue()),
                         hasProperty("surname", nullValue()),
                         hasProperty("email", nullValue()),
                         hasProperty("password", nullValue()),
-                        hasProperty("photo", nullValue()),
-                        hasProperty("news", nullValue()),
-                        hasProperty("articles", nullValue()),
-                        hasProperty("roles", nullValue())
+                        hasProperty("photo", nullValue())
                         )
                 ));
     }
