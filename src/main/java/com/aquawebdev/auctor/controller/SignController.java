@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.validation.Valid;
 
 @Controller
@@ -33,7 +35,8 @@ public class SignController {
     }
 
     @GetMapping("/signIn")
-    public String getSignInPage() {
+    public String getSignInPage(@RequestParam(name = "error", required = false) String error, Model model) {
+        model.addAttribute("error", error);
         return "signIn";
     }
 
