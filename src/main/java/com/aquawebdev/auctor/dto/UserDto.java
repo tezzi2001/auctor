@@ -3,6 +3,7 @@ package com.aquawebdev.auctor.dto;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.validation.annotations.Login;
 import com.aquawebdev.auctor.validation.annotations.Password;
+import com.aquawebdev.auctor.validation.annotations.UniqueEmail;
 import com.aquawebdev.auctor.validation.annotations.UniqueLogin;
 import lombok.Data;
 import javax.imageio.ImageIO;
@@ -23,6 +24,7 @@ public class UserDto {
     private String surname;
 
     @Email(message = "email is not valid")
+    @UniqueEmail
     private String email;
 
     @Password
