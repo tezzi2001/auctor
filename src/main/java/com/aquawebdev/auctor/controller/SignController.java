@@ -28,9 +28,7 @@ public class SignController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "signUp";
         }
-        if (!signService.signUp(user)) {
-            return "signUp";
-        }
+        signService.signUp(user);
         return "signIn";
     }
 
