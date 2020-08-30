@@ -3,6 +3,7 @@ package com.aquawebdev.auctor.dto;
 import com.aquawebdev.auctor.entity.User;
 import com.aquawebdev.auctor.validation.annotations.Login;
 import com.aquawebdev.auctor.validation.annotations.Password;
+import com.aquawebdev.auctor.validation.annotations.UniqueLogin;
 import lombok.Data;
 import javax.imageio.ImageIO;
 import javax.validation.constraints.Email;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @Data
 public class UserDto {
     @Login
+    @UniqueLogin
     private String login;
 
     private String name;
