@@ -1,6 +1,6 @@
-package com.aquawebdev.auctor.entity.validation;
+package com.aquawebdev.auctor.validation;
 
-import com.aquawebdev.auctor.entity.validation.annotations.Password;
+import com.aquawebdev.auctor.validation.annotations.Password;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;

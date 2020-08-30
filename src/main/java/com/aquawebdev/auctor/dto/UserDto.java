@@ -1,8 +1,8 @@
 package com.aquawebdev.auctor.dto;
 
 import com.aquawebdev.auctor.entity.User;
-import com.aquawebdev.auctor.entity.validation.annotations.Login;
-import com.aquawebdev.auctor.entity.validation.annotations.Password;
+import com.aquawebdev.auctor.validation.annotations.Login;
+import com.aquawebdev.auctor.validation.annotations.Password;
 import lombok.Data;
 import javax.imageio.ImageIO;
 import javax.validation.constraints.Email;
