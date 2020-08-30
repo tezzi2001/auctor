@@ -2,6 +2,7 @@ package com.aquawebdev.auctor.entity.validation.annotations;
 
 import com.aquawebdev.auctor.entity.validation.PasswordValidator;
 import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,4 +13,6 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = PasswordValidator.class)
 public @interface Password {
     String message() default "password should be from 4 to 20 characters and uses upper and lower cases";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 }
