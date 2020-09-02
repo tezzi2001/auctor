@@ -3,6 +3,7 @@ package com.aquawebdev.auctor.controller;
 import com.aquawebdev.auctor.dto.UserDto;
 import com.aquawebdev.auctor.service.SignService;
 import lombok.AllArgsConstructor;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -27,7 +29,9 @@ public class SignController {
     @PostMapping("/signUp")
     public String signUp(@Valid @ModelAttribute("user") UserDto user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("errors", bindingResult.getAllErrors());
+            model.addAttribute("errors", bindingResult.getAllErrors().stream()
+                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                    .collect(Collectors.toList()));
             return "signUp";
         }
         signService.signUp(user);

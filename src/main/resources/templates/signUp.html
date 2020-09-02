@@ -29,7 +29,7 @@
         <form th:action="@{/signUp}" th:object="${user}" method="POST">
             <p class="form-title">Start for free</p>
             <div th:each="error : ${errors}">
-                <p class="error" th:text="${error.getDefaultMessage()}"></p>
+                <p class="error" th:text="${error}"></p>
             </div>
             <div class="inp">
                 <input type="text" placeholder="Name" th:field="*{name}" class="input-mini">
