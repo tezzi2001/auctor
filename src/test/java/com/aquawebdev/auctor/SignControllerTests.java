@@ -83,19 +83,23 @@ class SignControllerTests {
     void signUp_isOk() throws Exception {
         String login = "test login";
         String password = "Test password";
+        String name = "name";
         String email = "test@email.com";
         String username = "test username";
 
         User user = new User();
         user.setLogin(login);
+        user.setName(name);
         user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
         user.setName(username);
 
-        when(userRepository.findByLogin(username)).thenReturn(Optional.of(user));
+        when(userRepository.findByLogin(username)).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
 
         mockMvc.perform(post("/signUp")
                 .param("username",username)
+                .param("name", name)
                 .param("password",password)
                 .param("login",login)
                 .param("email",email))
@@ -106,20 +110,24 @@ class SignControllerTests {
     @Test
     void signUp_notFound() throws Exception {
         String login = "test login";
-        String password = "test password";
-        String email = "";
+        String password = "Test password";
+        String name = "name";
+        String email = "test@email.com";
         String username = "test username";
 
         User user = new User();
         user.setLogin(login);
+        user.setName(name);
         user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
         user.setName(username);
 
         when(userRepository.findByLogin(username)).thenReturn(Optional.of(user));
+        when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
 
         mockMvc.perform(post("/signUp")
                 .param("username",username)
+                .param("name", name)
                 .param("password",password)
                 .param("login",login)
                 .param("email",email))
