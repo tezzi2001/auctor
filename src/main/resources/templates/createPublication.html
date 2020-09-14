@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auctor | Create publication</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/createPublicationStyle.css">
+    <script src="https://cdn.tiny.cloud/1/dhx3og9x5peleuwv3zzjnmldc7xs1lj28xapiamzmsaryocc/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+
+    <header>
+        <div class="wrapper">
+            <div class="head">
+
+                <div class="logo"><a href="#">Auctor</a></div>
+
+                <nav class="head-nav">
+                    <a href="#" class="c"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="#" class="c"><i class="fas fa-search"></i></a>
+                    <a href="#" class="c">publications</a>
+                    <div class="acc head-list">
+                        <span class="c_title">account</span>
+                        <div class="c_tr"></div>
+                        <ul class="c_change hide">
+                            <li class="c_change_link"><a href="#">Profile</a></li>
+                            <li class="c_change_link"><a href="#">Log out</a></li>
+                        </ul>
+                    </div>
+                    <div class="lang head-list">
+                        <span class="c_title">eng</span>
+                        <div class="c_tr"></div>
+                        <ul class="c_change hide">
+                            <li class="c_change_link hide"><a href="#">eng</a></li>
+                            <li class="c_change_link"><a href="#">рус</a></li>
+                            <li class="c_change_link"><a href="#">укр</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="create">
+        <div class="wrapper">
+            <h1 class="create-title">A new publication</h1>
+
+            <p class="create-subtitle">Choose language</p>
+            <div class="choose">
+                <div class="box">
+                    <span class="choose-title">English, Russian, etc.</span>
+                </div>
+                <ul class="choose-list hide">
+                    <li class="choose-list-item">English</li>
+                    <li class="choose-list-item">Russian</li>
+                    <li class="choose-list-item">Ukrainian</li>
+                </ul>
+            </div>
+
+            <p class="create-subtitle">Choose type</p>
+            <div class="choose">
+                <div class="box">
+                    <span class="choose-title">Article, news</span>
+                </div>
+                <ul class="choose-list hide">
+                    <li class="choose-list-item">Article</li>
+                    <li class="choose-list-item">News</li>
+                </ul>
+            </div>
+
+            <p class="create-subtitle">Create a title</p>
+            <input type="text" class="create-title_input">
+
+            <p class="create-subtitle">Content</p>
+
+
+            <div class="create-content">
+                <div class="create-content-nav">
+                    <div class="create-content-nav-ed-btn create-content-nav_active">Editor</div>
+                    <div class="create-content-nav-ed-btn">Load draft</div>
+                </div>
+                <div class="create-content-text">
+                    <textarea name="text" id="text" cols="123" rows="29" class="create-content-text-content"></textarea>
+                </div>
+            </div>
+
+            <div class="create-btns">
+                <button class="create-btns-item">Submit</button>
+                <button class="create-btns-item">Save as draft</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="wrapper">
+            <div class="ft">
+                <img src="img/com_logo.jpg" alt="Com logo" width="300px">
+                <div class="ft-btns">
+                    <a href="#" class="ft-btns-item">About us</a>
+                    <a href="#" class="ft-btns-item">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            plugins: 'autolink link hr lists bbcode code charmap autosave',
+            toolbar_mode: 'floating',
+            menubar: '',
+            toolbar: 'undo redo | bold italic underline | styleselect | alignleft aligncenter alignright alignjustify | outdent indent | link | numlist bullist | hr code charmap restoredraft',
+            default_link_target: '_blank'
+        });
+      </script>
+    <script src="js/createPublicationscript.js"></script>
+</body>
+</html>
